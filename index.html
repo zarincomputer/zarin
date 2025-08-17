@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   <style>
     body {
-      background: #111 url('1182.jpg') no-repeat center center fixed;
+      background: #111 url('C:\\Users\\ASUS\\Desktop\\mohammad\\ali zarin zamar\\1182.jpg') no-repeat center center fixed;
       background-size: cover;
       color: #fff;
       font-family: 'Vazirmatn', Tahoma, sans-serif;
@@ -360,10 +360,15 @@
       animation: avatarPulse 2.8s infinite;
     }
     @media (max-width: 600px) {
+      body {
+        background-attachment: scroll; /* برای جلوگیری از خرابی توی موبایل */
+        background-size: cover;
+        background-position: center;
+      }
       .card, .bank-card-box, .services-section {
-        max-width: 98vw;
-        margin: 24px auto;
-        padding: 18px 4vw 18px 4vw;
+        max-width: 90vw;
+        margin: 20px auto;
+        padding: 18px 4vw;
       }
     }
   </style>
@@ -382,7 +387,7 @@
       <p>شماره تماس: <a id="phone" href="tel:09126315017"><span id="phone-text">09126315017</span></a></p>
       <p>شماره مغازه: <a id="store-phone" href="tel:02334237296"><span id="store-phone-text">02334237296</span></a></p>
       <p>آدرس: روبروی سینما ابریشم، مجتمع خلیج فارس، طبقه همکف، واحد ۹</p>
-      <button class="save-contact-btn" onclick="downloadVCF()" style="margin:10px 0 0 0;"><i class="fa fa-address-book"></i> ذخیره مخاطب</button>
+      <button class="save-contact-btn" onclick="downloadVCF()"><i class="fa fa-address-book"></i> ذخیره مخاطب</button>
     </div>
     <div class="main-buttons" id="main-buttons">
       <button class="main-btn" onclick="showSection('cards')">شماره کارت‌ها</button>
@@ -446,13 +451,15 @@
       document.getElementById('store-phone').href = 'tel:' + storeNumber;
     });
     function downloadVCF() {
-      const vcf = `BEGIN:VCARD\nVERSION:3.0\nFN:فروشگاه کامپیوتر زرین\nORG:فروشگاه کامپیوتر زرین\nTEL;TYPE=CELL:09126315017\nTEL;TYPE=WORK:02334237296\nADR:;;روبروی سینما ابریشم، مجتمع خلیج فارس، طبقه همکف، واحد ۹;;;ایران\nEND:VCARD`;
-      const blob = new Blob([vcf], {type: 'text/vcard'});
+      const vcf = `BEGIN:VCARD\nVERSION:3.0\nFN:فروشگاه کامپیوتر زرین\nORG:فروشگاه کامپیوتر زرین\nTEL;TYPE=CELL:${number}\nTEL;TYPE=WORK:${storeNumber}\nADR:;;روبروی سینما ابریشم، مجتمع خلیج فارس، طبقه همکف، واحد ۹;;;ایران\nEND:VCARD`;
+      const blob = new Blob([vcf], { type: 'text/vcard;charset=utf-8;' });
+      const url = window.URL.createObjectURL(blob);
       const a = document.createElement('a');
-      a.href = URL.createObjectURL(blob);
-      a.download = 'zarin computer.vcf';
+      a.href = url;
+      a.download = 'zarin_computer.vcf';
       document.body.appendChild(a);
       a.click();
+      window.URL.revokeObjectURL(url);
       document.body.removeChild(a);
     }
     function copyCard(number, el) {
@@ -460,7 +467,7 @@
       const box = document.querySelector('.bank-card-box');
       const msg = box.querySelector('#copy-card-msg');
       msg.style.display = 'block';
-      setTimeout(()=>{msg.style.display='none';}, 1200);
+      setTimeout(() => { msg.style.display = 'none'; }, 1200);
     }
     function showSection(section) {
       document.getElementById('main-card').style.display = (section === 'main') ? '' : 'none';
