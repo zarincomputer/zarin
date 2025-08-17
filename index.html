@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8">
+  <title>فروشگاه کامپیوتر زرین</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- فونت فارسی Vazirmatn -->
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
+  <!-- آیکون‌های FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <style>
+    body {
+      background: #111 url('C:\\Users\\ASUS\\Desktop\\mohammad\\ali zarin zamar\\1182.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+      font-family: 'Vazirmatn', Tahoma, sans-serif;
+      direction: rtl;
+      text-align: center;
+      min-height: 100vh;
+      margin: 0;
+      position: relative;
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: inherit;
+      opacity: 0.3;
+      filter: blur(2px);
+      z-index: -1;
+    }
+    .card {
+      background: rgba(35,39,47,0.82);
+      max-width: 370px;
+      margin: 60px auto;
+      padding: 36px 24px 32px 24px;
+      border-radius: 22px;
+      box-shadow:
+        0 0 0 2px rgba(58,113,255,0.22),
+        0 0 32px 8px rgba(58,113,255,0.18),
+        0 0 64px 24px rgba(186,0,255,0.13),
+        0 0 128px 48px rgba(0,255,255,0.10);
+      transition: transform 0.3s cubic-bezier(.4,2,.6,1), box-shadow 0.3s;
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(18px) saturate(160%);
+      -webkit-backdrop-filter: blur(18px) saturate(160%);
+      z-index: 1;
+      border: 1.5px solid rgba(255,255,255,0.13);
+    }
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 22px;
+      background: rgba(255,255,255,0.08);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .card > * { position: relative; z-index: 1; }
+    .shine {
+      position: absolute;
+      top: -400px;
+      left: -240px;
+      width: 80px;
+      height: 1400px;
+      background: linear-gradient(120deg, rgba(255,255,255,0.0) 0%, rgba(255,255,255,0.7) 50%, rgba(255,255,255,0.0) 100%);
+      opacity: 0.7;
+      border-radius: 40px;
+      filter: blur(2.5px);
+      pointer-events: none;
+      transform: rotate(24deg);
+      animation: shine-move 3.2s cubic-bezier(.4,2,.6,1) 0.2s 1 forwards;
+    }
+    @keyframes shine-move {
+      0% { top: -400px; left: -240px; opacity: 0.15; filter: blur(2.5px); }
+      60% { opacity: 0.8; filter: blur(1.2px); }
+      100% { top: 260px; left: 330px; opacity: 0; filter: blur(8px); display: none; }
+    }
+    .card:hover {
+      transform: translateY(-8px) scale(1.03) rotateZ(-1deg);
+      box-shadow: 0 16px 48px rgba(25, 118, 210, 0.18);
+    }
+    .store-logo {
+      width: 112px;
+      height: 112px;
+      border-radius: 50%;
+      margin-bottom: 18px;
+      object-fit: contain;
+      border: 3px solid #fff;
+      transition: transform 0.3s, box-shadow 0.3s;
+      margin-top: 8px;
+      box-shadow: 0 4px 18px 0 rgba(25, 118, 210, 0.13), 0 1.5px 8px 0 rgba(0,0,0,0.10);
+      position: relative;
+      z-index: 1;
+    }
+    .store-logo::after {
+      content: "";
+      position: absolute;
+      top: -8px;
+      left: -8px;
+      width: 128px;
+      height: 128px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.85);
+      opacity: 0.45;
+      filter: blur(5px);
+      z-index: -1;
+      pointer-events: none;
+    }
+    h1 {
+      font-size: 1.6em;
+      margin: 0 0 10px 0;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 0.5px;
+    }
+    .manager {
+      font-size: 1.13em;
+      margin: 8px 0;
+      color: #90caf9;
+      font-weight: 500;
+    }
+    p {
+      margin: 8px 0 8px 0;
+      font-size: 1.04em;
+      line-height: 1.7;
+    }
+    #phone-text, #store-phone-text {
+      color: #64b5f6;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 1.08em;
+      letter-spacing: 0.2px;
+    }
+    #phone, #store-phone {
+      text-decoration: none;
+    }
+    .save-contact-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: linear-gradient(90deg,#1976d2 60%,#43e97b 100%);
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      padding: 8px 18px;
+      font-size: 1.08em;
+      font-family: inherit;
+      font-weight: 600;
+      margin: 18px 0 8px 0;
+      cursor: pointer;
+      box-shadow: 0 2px 12px rgba(25, 118, 210, 0.13);
+      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+    }
+    .save-contact-btn:hover {
+      background: linear-gradient(90deg,#43e97b 0%,#1976d2 100%);
+      transform: scale(1.06) translateY(-2px);
+      box-shadow: 0 6px 24px rgba(25, 118, 210, 0.18);
+    }
+    .cards-section {
+      margin: 0;
+      text-align: right;
+    }
+    .bank-card-box {
+      background: rgba(35,39,47,0.92);
+      max-width: 340px;
+      margin: 24px auto 0 auto;
+      padding: 18px 18px 12px 18px;
+      border-radius: 18px;
+      box-shadow:
+        0 0 0 1.5px rgba(58,113,255,0.13),
+        0 0 16px 4px rgba(58,113,255,0.10),
+        0 0 32px 12px rgba(186,0,255,0.07);
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(10px) saturate(140%);
+      -webkit-backdrop-filter: blur(10px) saturate(140%);
+      border: 1px solid rgba(255,255,255,0.10);
+      z-index: 1;
+    }
+    .bank-card {
+      background: rgba(255,255,255,0.07);
+      border-radius: 10px;
+      padding: 7px 12px;
+      margin-bottom: 7px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.08em;
+    }
+    .bank-name {
+      color: #ffe066;
+      font-weight: 600;
+      min-width: 38px;
+    }
+    .card-number {
+      font-family: monospace;
+      letter-spacing: 2px;
+      color: #fff;
+      font-size: 1.08em;
+      direction: ltr;
+    }
+    .copy-card {
+      cursor: pointer;
+      color: #1976d2;
+      font-size: 1em;
+      margin-right: auto;
+      padding: 2px 8px;
+      border-radius: 6px;
+      transition: background 0.2s, color 0.2s;
+    }
+    .copy-card:hover {
+      background: #1976d2;
+      color: #fff;
+    }
+    .services-section {
+      background: rgba(35,39,47,0.92);
+      max-width: 340px;
+      margin: 24px auto 0 auto;
+      padding: 18px 18px 12px 18px;
+      border-radius: 18px;
+      box-shadow:
+        0 0 0 1.5px rgba(58,113,255,0.13),
+        0 0 16px 4px rgba(58,113,255,0.10),
+        0 0 32px 12px rgba(186,0,255,0.07);
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(10px) saturate(140%);
+      -webkit-backdrop-filter: blur(10px) saturate(140%);
+      border: 1px solid rgba(255,255,255,0.10);
+      z-index: 1;
+      text-align: right;
+    }
+    .services-section ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .services-section li {
+      font-size: 1.04em;
+      line-height: 1.7;
+      margin-bottom: 8px;
+      color: #fff;
+    }
+    .services-section .highlight {
+      color: #ff0000;
+      font-weight: 600;
+    }
+    .main-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      margin: 24px 0 0 0;
+    }
+    .main-btn {
+      background: linear-gradient(90deg,#1976d2 60%,#43e97b 100%);
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      padding: 10px 28px;
+      font-size: 1.08em;
+      font-family: inherit;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 2px 12px rgba(25, 118, 210, 0.13);
+      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+      animation: pulse 2.5s infinite;
+    }
+    .main-btn:hover {
+      background: linear-gradient(90deg,#43e97b 0%,#1976d2 100%);
+      transform: scale(1.06) translateY(-2px);
+      box-shadow: 0 6px 24px rgba(25, 118, 210, 0.18);
+    }
+    .back-btn {
+      background: linear-gradient(90deg,#1976d2 60%,#43e97b 100%);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: 9px 32px;
+      font-size: 1.08em;
+      font-family: inherit;
+      font-weight: 700;
+      margin-bottom: 18px;
+      margin-top: 8px;
+      cursor: pointer;
+      box-shadow: 0 2px 12px rgba(25, 118, 210, 0.13);
+      transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+      letter-spacing: 0.5px;
+    }
+    .back-btn:hover {
+      background: linear-gradient(90deg,#43e97b 0%,#1976d2 100%);
+      color: #fff;
+      box-shadow: 0 6px 24px rgba(25, 118, 210, 0.18);
+    }
+    .lightning-border {
+      pointer-events: none;
+      position: absolute;
+      inset: 0;
+      border-radius: 22px;
+      z-index: 2;
+    }
+    .lightning-border-line {
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      left: 0; top: 0;
+      border-radius: 3px;
+      background: linear-gradient(90deg, #fff 0%, #ffe066 60%, #aeefff 100%);
+      box-shadow: 0 0 16px 4px #fff8, 0 0 32px 8px #ffe06688;
+      opacity: 0.85;
+      animation: lightning-border-move 2.2s linear infinite;
+    }
+    @keyframes lightning-border-move {
+      0% { left: 0; width: 0; opacity: 0; }
+      10% { opacity: 1; }
+      50% { left: 0; width: 100%; opacity: 1; }
+      90% { opacity: 1; }
+      100% { left: 100%; width: 0; opacity: 0; }
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.07); }
+      100% { transform: scale(1); }
+    }
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(40px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    .card, .bank-card-box, .services-section {
+      animation: fadeInUp 0.8s cubic-bezier(.4,2,.6,1);
+    }
+    @keyframes avatarPulse {
+      0% {
+        box-shadow:
+          0 0 0 0 rgba(58,113,255,0.22),
+          0 0 0 0 rgba(186,0,255,0.13),
+          0 0 0 0 rgba(0,255,255,0.10),
+          0 4px 18px 0 rgba(25, 118, 210, 0.13);
+      }
+      50% {
+        box-shadow:
+          0 0 0 10px rgba(58,113,255,0.13),
+          0 0 0 20px rgba(186,0,255,0.08),
+          0 0 0 0 rgba(0,255,255,0.00),
+          0 4px 18px 0 rgba(25, 118, 210, 0.18);
+      }
+      100% {
+        box-shadow:
+          0 0 0 0 rgba(58,113,255,0.22),
+          0 0 0 0 rgba(186,0,255,0.13),
+          0 0 0 0 rgba(0,255,255,0.10),
+          0 4px 18px 0 rgba(25, 118, 210, 0.13);
+      }
+    }
+    .store-logo {
+      animation: avatarPulse 2.8s infinite;
+    }
+    @media (max-width: 600px) {
+      .card, .bank-card-box, .services-section {
+        max-width: 98vw;
+        margin: 24px auto;
+        padding: 18px 4vw 18px 4vw;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container-card">
+    <div class="card" id="main-card" style="position:relative;">
+      <div class="lightning-border">
+        <div class="lightning-border-line"></div>
+        <div class="lightning-border-line" style="top:auto;bottom:0;transform:rotate(180deg);"></div>
+      </div>
+      <div class="shine"></div>
+      <img src="store-logo.jpg" alt="لوگو فروشگاه" class="store-logo">
+      <h1>فروشگاه کامپیوتر زرین</h1>
+      <p class="manager">با مدیریت: علی زرین‌کمر</p>
+      <p>شماره تماس: <a id="phone" href="tel:09126315017"><span id="phone-text">09126315017</span></a></p>
+      <p>شماره مغازه: <a id="store-phone" href="tel:02334237296"><span id="store-phone-text">02334237296</span></a></p>
+      <p>آدرس: روبروی سینما ابریشم، مجتمع خلیج فارس، طبقه همکف، واحد ۹</p>
+      <button class="save-contact-btn" onclick="downloadVCF()" style="margin:10px 0 0 0;"><i class="fa fa-address-book"></i> ذخیره مخاطب</button>
+    </div>
+    <div class="main-buttons" id="main-buttons">
+      <button class="main-btn" onclick="showSection('cards')">شماره کارت‌ها</button>
+      <button class="main-btn" onclick="showSection('services')">خدمات ما</button>
+    </div>
+    <div class="bank-card-box" id="bank-card-box" style="display:none;position:relative;">
+      <div class="lightning-border">
+        <div class="lightning-border-line"></div>
+        <div class="lightning-border-line" style="top:auto;bottom:0;transform:rotate(180deg);"></div>
+      </div>
+      <button class="back-btn" onclick="showSection('main')">بازگشت به صفحه اصلی</button>
+      <div class="cards-section">
+        <h3>شماره کارت‌های فروشگاه</h3>
+        <div class="bank-card">
+          <span class="bank-name">ملی</span>
+          <span class="card-number">6037 9974 9887 1095</span>
+          <span class="copy-card" onclick="copyCard('6037997498871095', this)">کپی</span>
+        </div>
+        <div class="bank-card">
+          <span class="bank-name">مهر</span>
+          <span class="card-number">6063 7310 3687 1110</span>
+          <span class="copy-card" onclick="copyCard('6063731036871110', this)">کپی</span>
+        </div>
+        <div class="bank-card">
+          <span class="bank-name">ملت</span>
+          <span class="card-number">6104 3378 0350 8835</span>
+          <span class="copy-card" onclick="copyCard('6104337803508835', this)">کپی</span>
+        </div>
+        <div class="bank-card">
+          <span class="bank-name">رفاه</span>
+          <span class="card-number">5894 6318 8706 8542</span>
+          <span class="copy-card" onclick="copyCard('5894631887068542', this)">کپی</span>
+        </div>
+      </div>
+      <div id="copy-card-msg" style="display:none;color:#43e97b;font-size:0.98em;text-align:center;margin-top:8px;">کپی شد!</div>
+    </div>
+    <div class="services-section" id="services-section" style="display:none;position:relative;">
+      <div class="lightning-border">
+        <div class="lightning-border-line"></div>
+        <div class="lightning-border-line" style="top:auto;bottom:0;transform:rotate(180deg);"></div>
+      </div>
+      <button class="back-btn" onclick="showSection('main')">بازگشت به صفحه اصلی</button>
+      <h3>خدمات فروشگاه کامپیوتر زرین</h3>
+      <ul>
+        <li>فروش تخصصی لپ‌تاپ‌های گیمینگ و مهندسی</li>
+        <li>کیس‌های گیمینگ و اداری</li>
+        <li>شبکه و سخت‌افزار</li>
+        <li>ماشین‌های اداری</li>
+        <li>نرم‌افزارهای تخصصی</li>
+        <li class="highlight">با ۲۰ سال سابقه فعالیت</li>
+      </ul>
+    </div>
+  </div>
+  <script>
+    const number = '09126315017';
+    const storeNumber = '02334237296';
+    document.addEventListener('DOMContentLoaded', function() {
+      document.getElementById('phone-text').textContent = number;
+      document.getElementById('phone').href = 'tel:' + number;
+      document.getElementById('store-phone-text').textContent = storeNumber;
+      document.getElementById('store-phone').href = 'tel:' + storeNumber;
+    });
+    function downloadVCF() {
+      const vcf = `BEGIN:VCARD\nVERSION:3.0\nFN:فروشگاه کامپیوتر زرین\nORG:فروشگاه کامپیوتر زرین\nTEL;TYPE=CELL:09126315017\nTEL;TYPE=WORK:02334237296\nADR:;;روبروی سینما ابریشم، مجتمع خلیج فارس، طبقه همکف، واحد ۹;;;ایران\nEND:VCARD`;
+      const blob = new Blob([vcf], {type: 'text/vcard'});
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'zarin computer.vcf';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    }
+    function copyCard(number, el) {
+      navigator.clipboard.writeText(number);
+      const box = document.querySelector('.bank-card-box');
+      const msg = box.querySelector('#copy-card-msg');
+      msg.style.display = 'block';
+      setTimeout(()=>{msg.style.display='none';}, 1200);
+    }
+    function showSection(section) {
+      document.getElementById('main-card').style.display = (section === 'main') ? '' : 'none';
+      document.getElementById('main-buttons').style.display = (section === 'main') ? '' : 'none';
+      document.getElementById('bank-card-box').style.display = (section === 'cards') ? '' : 'none';
+      document.getElementById('services-section').style.display = (section === 'services') ? '' : 'none';
+    }
+  </script>
+</body>
+</html>
