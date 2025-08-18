@@ -33,30 +33,30 @@
       z-index: -1;
     }
     .card {
-      background: rgba(35,39,47,0.82);
+      background: rgba(255, 255, 255, 0.02); /* Further reduced opacity for clearer glass effect */
       max-width: 370px;
       margin: 60px auto;
       padding: 36px 24px 32px 24px;
       border-radius: 22px;
       box-shadow:
-        0 0 0 2px rgba(58,113,255,0.22),
-        0 0 32px 8px rgba(58,113,255,0.18),
-        0 0 64px 24px rgba(186,0,255,0.13),
-        0 0 128px 48px rgba(0,255,255,0.10);
+        0 0 0 2px rgba(58,113,255,0.15), /* Lighter shadow for transparency */
+        0 0 32px 8px rgba(58,113,255,0.12),
+        0 0 64px 24px rgba(186,0,255,0.08),
+        0 0 128px 48px rgba(0,255,255,0.05);
       transition: transform 0.3s cubic-bezier(.4,2,.6,1), box-shadow 0.3s;
       position: relative;
       overflow: hidden;
-      backdrop-filter: blur(18px) saturate(160%);
-      -webkit-backdrop-filter: blur(18px) saturate(160%);
+      backdrop-filter: blur(25px) saturate(200%); /* Increased blur and saturation for frosted glass */
+      -webkit-backdrop-filter: blur(25px) saturate(200%);
       z-index: 1;
-      border: 1.5px solid rgba(255,255,255,0.13);
+      border: 1px solid rgba(255,255,255,0.15); /* More transparent border */
     }
     .card::before {
       content: "";
       position: absolute;
       inset: 0;
       border-radius: 22px;
-      background: rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.03); /* Even lighter overlay for glass effect */
       pointer-events: none;
       z-index: 0;
     }
@@ -67,22 +67,22 @@
       left: -240px;
       width: 80px;
       height: 1400px;
-      background: linear-gradient(120deg, rgba(255,255,255,0.0) 0%, rgba(255,255,255,0.7) 50%, rgba(255,255,255,0.0) 100%);
-      opacity: 0.7;
+      background: linear-gradient(120deg, rgba(255,255,255,0.0) 0%, rgba(255,255,255,0.5) 50%, rgba(255,255,255,0.0) 100%);
+      opacity: 0.4; /* Subtler shine for clearer background */
       border-radius: 40px;
-      filter: blur(2.5px);
+      filter: blur(3px);
       pointer-events: none;
       transform: rotate(24deg);
       animation: shine-move 3.2s cubic-bezier(.4,2,.6,1) 0.2s 1 forwards;
     }
     @keyframes shine-move {
-      0% { top: -400px; left: -240px; opacity: 0.15; filter: blur(2.5px); }
-      60% { opacity: 0.8; filter: blur(1.2px); }
+      0% { top: -400px; left: -240px; opacity: 0.1; filter: blur(3px); }
+      60% { opacity: 0.5; filter: blur(1.5px); }
       100% { top: 260px; left: 330px; opacity: 0; filter: blur(8px); display: none; }
     }
     .card:hover {
       transform: translateY(-8px) scale(1.03) rotateZ(-1deg);
-      box-shadow: 0 16px 48px rgba(25, 118, 210, 0.18);
+      box-shadow: 0 16px 48px rgba(25, 118, 210, 0.12);
     }
     .store-logo {
       width: 112px;
@@ -360,15 +360,10 @@
       animation: avatarPulse 2.8s infinite;
     }
     @media (max-width: 600px) {
-      body {
-        background-attachment: scroll; /* برای جلوگیری از خرابی توی موبایل */
-        background-size: cover;
-        background-position: center;
-      }
       .card, .bank-card-box, .services-section {
-        max-width: 90vw;
-        margin: 20px auto;
-        padding: 18px 4vw;
+        max-width: 98vw;
+        margin: 24px auto;
+        padding: 18px 4vw 18px 4vw;
       }
     }
   </style>
@@ -381,13 +376,13 @@
         <div class="lightning-border-line" style="top:auto;bottom:0;transform:rotate(180deg);"></div>
       </div>
       <div class="shine"></div>
-      <img src="store-logo.jpg" alt="لوگو فروشگاه" class="store-logo">
+      <img src="2.jpg" alt="لوگو فروشگاه" class="store-logo">
       <h1>فروشگاه کامپیوتر زرین</h1>
       <p class="manager">با مدیریت: علی زرین‌کمر</p>
       <p>شماره تماس: <a id="phone" href="tel:09126315017"><span id="phone-text">09126315017</span></a></p>
       <p>شماره مغازه: <a id="store-phone" href="tel:02334237296"><span id="store-phone-text">02334237296</span></a></p>
       <p>آدرس: روبروی سینما ابریشم، مجتمع خلیج فارس، طبقه همکف، واحد ۹</p>
-      <button class="save-contact-btn" onclick="downloadVCF()"><i class="fa fa-address-book"></i> ذخیره مخاطب</button>
+      <button class="save-contact-btn" onclick="downloadVCF()" style="margin:10px 0 0 0;"><i class="fa fa-address-book"></i> ذخیره مخاطب</button>
     </div>
     <div class="main-buttons" id="main-buttons">
       <button class="main-btn" onclick="showSection('cards')">شماره کارت‌ها</button>
@@ -451,15 +446,13 @@
       document.getElementById('store-phone').href = 'tel:' + storeNumber;
     });
     function downloadVCF() {
-      const vcf = `BEGIN:VCARD\nVERSION:3.0\nFN:فروشگاه کامپیوتر زرین\nORG:فروشگاه کامپیوتر زرین\nTEL;TYPE=CELL:${number}\nTEL;TYPE=WORK:${storeNumber}\nADR:;;روبروی سینما ابریشم، مجتمع خلیج فارس، طبقه همکف، واحد ۹;;;ایران\nEND:VCARD`;
-      const blob = new Blob([vcf], { type: 'text/vcard;charset=utf-8;' });
-      const url = window.URL.createObjectURL(blob);
+      const vcf = `BEGIN:VCARD\nVERSION:3.0\nFN:فروشگاه کامپیوتر زرین\nORG:فروشگاه کامپیوتر زرین\nTEL;TYPE=CELL:09126315017\nTEL;TYPE=WORK:02334237296\nADR:;;روبروی سینما ابریشم، مجتمع خلیج فارس، طبقه همکف، واحد ۹;;;ایران\nEND:VCARD`;
+      const blob = new Blob([vcf], {type: 'text/vcard'});
       const a = document.createElement('a');
-      a.href = url;
-      a.download = 'zarin_computer.vcf';
+      a.href = URL.createObjectURL(blob);
+      a.download = 'zarin computer.vcf';
       document.body.appendChild(a);
       a.click();
-      window.URL.revokeObjectURL(url);
       document.body.removeChild(a);
     }
     function copyCard(number, el) {
@@ -467,7 +460,7 @@
       const box = document.querySelector('.bank-card-box');
       const msg = box.querySelector('#copy-card-msg');
       msg.style.display = 'block';
-      setTimeout(() => { msg.style.display = 'none'; }, 1200);
+      setTimeout(()=>{msg.style.display='none';}, 1200);
     }
     function showSection(section) {
       document.getElementById('main-card').style.display = (section === 'main') ? '' : 'none';
